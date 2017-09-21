@@ -1,3 +1,3 @@
 # PlantDiseaseDetection
-Nutrient deficiency detection in plants
+Nutrient deficiency detection in plants.
 In development
