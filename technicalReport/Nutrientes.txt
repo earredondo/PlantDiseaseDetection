@@ -1,8 +1,0 @@
-Planta		Deficiencia		Sintoma
-Tomate		Potasio			Bordes amarillos, cafes
-Papa		Potasio			Bordes amarillos, cafes
-Tomate		Fosoforo		Color morado
-Tomate		Nitrogeno		Hoja amarilla hojas viejas
-Tomate		Azufre			Hoja amarilla hojas nuevas
-Papa		Nitrogeno		Clorosis
-
