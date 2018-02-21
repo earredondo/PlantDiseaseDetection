@@ -1,0 +1,1 @@
+./build/tools/caffe train -solver /home/edgar/git/PlantDiseaseDetection/deepLearning/models/finetune_tomato_diseases/solver.prototxt -weights /home/edgar/git/PlantDiseaseDetection/deepLearning/models/bvlc_googlenet/bvlc_googlenet.caffemodel
