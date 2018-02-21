@@ -9,7 +9,7 @@ label = 0
 
 trf = open(TRAIN_FILE, 'w')
 tef = open(TEST_FILE, 'w')
-for root, directories, filenames in os.walk('./data/color/'):
+for root, directories, filenames in os.walk('/home/edgar/git/PlantDiseaseDetection/data/color/'):
     for directory in directories:
         theDir = os.path.join(root, directory)
         images = [f for f in os.listdir(theDir)]

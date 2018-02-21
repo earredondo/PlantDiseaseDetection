@@ -1,0 +1,19 @@
+net: "/home/edgar/git/PlantDiseaseDetection/deepLearning/models/finetune_tomato_diseases/train_val.prototxt"
+test_iter: 1000
+test_interval: 4000
+test_initialization: false
+display: 40
+average_loss: 40
+# lr for fine-tuning should be lower than when starting from scratch
+base_lr: 0.001
+lr_policy: "step"
+#stepsize should also be lower, as we're closer to being done
+stepsize: 64000
+gamma: 0.96
+max_iter: 10000000
+momentum: 0.9
+weight_decay: 0.0002
+snapshot: 40000
+snapshot_prefix: "models/bvlc_googlenet/bvlc_googlenet"
+# uncomment the following to default to GPU mode solving
+# solver_mode: GPU
