@@ -1,1 +1,3 @@
 ./build/tools/caffe train -solver /home/edgar/git/PlantDiseaseDetection/deepLearning/models/finetune_tomato_diseases/solver.prototxt -weights /home/edgar/git/PlantDiseaseDetection/deepLearning/models/bvlc_googlenet/bvlc_googlenet.caffemodel
+
+python3 deep_learning_with_opencv.py --prototxt deploy.prototxt --model ../../../../PlantDiseaseDetection_models/finetune_flickr_style/finetune_flickr_style_iter_8097.caffemodel --labels synset_words.txt --image images/Healty_01.JPG
