@@ -95,12 +95,12 @@ public class Classifier {
             System.out.println("[INFO] " + (i + 1) + ". label: " + this.classes.get(idxs.get(i)) + ", probability: " + probs.get(idxs.get(i)));
         }
     }
-    
+    /*
     public static void main(String[] args) {
         //Classifier classifier = new Classifier(args[0], args[1], args[2], args[3]);
         Classifier classifier = new Classifier();
         classifier.forward();
         classifier.printResults();
     }
-    
+    */
 }
