@@ -1,0 +1,10 @@
+0 Spider_mites
+1 Septoria_Leaf_Spot
+2 Bacterial_Spot
+3 Yellow_Leaf_Curl_Virus
+4 Healty
+5 Mosaic_virus
+6 Target_Spot
+7 Early_Blight
+8 Late_Blight
+9 Leaf_Mold

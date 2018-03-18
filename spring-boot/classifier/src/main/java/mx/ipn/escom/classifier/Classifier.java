@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Scanner;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
+import org.opencv.core.MatOfByte;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.dnn.Dnn;
@@ -27,21 +28,28 @@ public class Classifier {
     
     private final List<String> classes;
     private final Net cnn;
-    private final String image;
+    private Mat image;
     private Mat predictions;
 
     public Classifier(String labels, String prototxt, String caffeModel, String image){
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         this.classes    = readLabels(labels);
         this.cnn        = readCaffeModel(prototxt, caffeModel);
-        this.image      = image;
+        this.image      = Imgcodecs.imread(image);;
+    }
+    
+    public Classifier(String labels, String prototxt, String caffeModel){
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        this.classes    = readLabels(labels);
+        this.cnn        = readCaffeModel(prototxt, caffeModel);
+        this.image      = null;
     }
     
     public Classifier(){
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         this.classes    = readLabels(getClass().getResource("/synset_words.txt").getPath());
-        this.cnn        = readCaffeModel(getClass().getResource("/deploy.prototxt").getPath(), getClass().getResource("/finetune_flickr_style_iter_8097.caffemodel").getPath());
-        this.image      = getClass().getResource("/images/Healty_03.JPG").getPath();
+        this.cnn        = readCaffeModel(getClass().getResource("/deploy.prototxt").getPath(), getClass().getResource("/classifier.caffemodel").getPath());
+        //this.image      = Imgcodecs.imread(getClass().getResource("/images/Healty_03.JPG").getPath());
     }
     
     private List<String> readLabels(String labelsPath){
@@ -63,8 +71,8 @@ public class Classifier {
     }
     
     public void forward(){
-        Mat rawImage = Imgcodecs.imread(this.image);
-        Mat inputBlob = Dnn.blobFromImage(rawImage, 1.0, new Size(227, 227), new Scalar(104, 117, 123), false);
+        //Mat rawImage = Imgcodecs.imread(this.image);
+        Mat inputBlob = Dnn.blobFromImage(this.image, 1.0, new Size(227, 227), new Scalar(104, 117, 123), false);
         this.cnn.setInput(inputBlob);
         this.predictions = cnn.forward();
     }
@@ -78,11 +86,13 @@ public class Classifier {
         for (int i = 0; i < a.size(); i++) {
             indexes.add(i);
         }
-        //Collections.sort(indexes, (final Integer i1, final Integer i2) -> (ascending ? 1 : -1) * Double.compare(a.get(i1), a.get(i2)));
+        Collections.sort(indexes, (final Integer i1, final Integer i2) -> (ascending ? 1 : -1) * Double.compare(a.get(i1), a.get(i2)));
         return indexes;
     }
     
-    public void printResults(){
+    public String getResults(){
+        String results = "";
+        
         double len = this.predictions.size().width;
         List<Double> probs = new ArrayList();
         
@@ -92,9 +102,20 @@ public class Classifier {
         List<Integer> idxs = Classifier.argsort(probs, false);
         
         for(int i = 0; i < 5; i ++){
-            System.out.println("[INFO] " + (i + 1) + ". label: " + this.classes.get(idxs.get(i)) + ", probability: " + probs.get(idxs.get(i)));
+            results += "[INFO] " + (i + 1) + ". label: " + this.classes.get(idxs.get(i)) + ", probability: " + probs.get(idxs.get(i));
         }
+        
+        return results;
     }
+    
+    public void printResults(){
+        System.out.println(getResults());
+    }
+    
+    public void setImage(byte[] image){
+        this.image = Imgcodecs.imdecode(new MatOfByte(image), Imgcodecs.CV_LOAD_IMAGE_UNCHANGED);
+    }
+    
     /*
     public static void main(String[] args) {
         //Classifier classifier = new Classifier(args[0], args[1], args[2], args[3]);

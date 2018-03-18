@@ -5,17 +5,26 @@
  */
 package mx.ipn.escom.services;
 
+import mx.ipn.escom.classifier.Classifier;
 import mx.ipn.escom.pojos.Leaf;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author edgar
  */
+@Service
 public class ClassifierServiceImpl implements ClassifierService{
     
+    @Autowired(required = true)
+    private Classifier classifier;
+    
     @Override
-    public void classify(Leaf leaf){
-        
+    public String classify(Leaf leaf){
+        classifier.setImage(leaf.getImage());
+        classifier.forward();
+        return classifier.getResults();
     }
     
 }

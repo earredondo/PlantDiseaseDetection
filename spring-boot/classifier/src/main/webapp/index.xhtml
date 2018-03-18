@@ -10,6 +10,14 @@
 </h:head>
 
 <h:body>
+    
+    <h:form>
+        <p:fileUpload fileUploadListener="#{classifierBean.subirImagen}" mode="advanced" dragDropSupport="true"
+                      update="messages @this" sizeLimit="1000000000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" fileLimit="1" />
+
+        <p:growl id="messages" showDetail="true" />
+    </h:form>
+    
     <h:form id="hello-world">
 
         <p:panel header="Prueba">

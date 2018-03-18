@@ -8,17 +8,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 import javax.faces.webapp.FacesServlet;
 import javax.servlet.DispatcherType;
 import java.util.EnumSet;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
+import mx.ipn.escom.classifier.Classifier;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 
-@EnableAutoConfiguration
-//@ComponentScan({"com.auth0.samples.bootfaces"})
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
+@ComponentScan({"mx.ipn.escom.presentation", "mx.ipn.escom.services"})
 @SpringBootApplication
-@EnableTransactionManagement
 public class ClassifierApplication {
 
     public static void main(String[] args) {
@@ -27,8 +28,10 @@ public class ClassifierApplication {
     
     @Bean
     public ServletRegistrationBean servletRegistrationBean() {
-        FacesServlet servlet = new FacesServlet();
-        return new ServletRegistrationBean(servlet, "*.jsf");
+        ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(
+                new FacesServlet(), "*.jsf");
+        servletRegistrationBean.setLoadOnStartup(1);
+        return servletRegistrationBean;
     }
 
     @Bean
@@ -38,5 +41,10 @@ public class ClassifierApplication {
                 DispatcherType.ASYNC, DispatcherType.ERROR));
         rwFilter.addUrlPatterns("/*");
         return rwFilter;
+    }
+    
+    @Bean
+    public Classifier getClassifier(){
+        return new Classifier();
     }
 }
