@@ -73,7 +73,7 @@ public class ClassifierController {
             
             this.image = new DefaultStreamedContent(event.getFile().getInputstream(), "image/png");
             
-            FacesMessage message = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
+            FacesMessage message = new FacesMessage("Identificación", "Se realizó la clasificación correctamente.");
             FacesContext.getCurrentInstance().addMessage(null, message);
         } catch (IOException ioe) {
             ioe.printStackTrace();

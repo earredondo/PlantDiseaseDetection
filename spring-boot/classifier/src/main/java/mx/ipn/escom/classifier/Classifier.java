@@ -9,8 +9,11 @@ package mx.ipn.escom.classifier;
  *
  * @author edgar
  */
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -47,9 +50,11 @@ public class Classifier {
     
     public Classifier(){
         //System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-        this.classes    = readLabels(getClass().getResource("/synset_words.txt").getPath());
-        this.cnn        = readCaffeModel(getClass().getResource("/deploy.prototxt").getPath(), getClass().getResource("/classifier.caffemodel").getPath());
+        //this.classes    = readLabels(getClass().getResource("/synset_words.txt").getPath());
+        //this.cnn        = readCaffeModel(getClass().getResource("/deploy.prototxt").getPath(), getClass().getResource("/classifier.caffemodel").getPath());
         //this.image      = Imgcodecs.imread(getClass().getResource("/images/Healty_03.JPG").getPath());
+        this.classes    = readLabels(getPath("synset_words.txt"));
+        this.cnn        = readCaffeModel(getPath("deploy.prototxt"), getPath("classifier.caffemodel"));
     }
     
     private List<String> readLabels(String labelsPath){
@@ -114,6 +119,30 @@ public class Classifier {
     
     public void setImage(byte[] image){
         this.image = Imgcodecs.imdecode(new MatOfByte(image), Imgcodecs.CV_LOAD_IMAGE_UNCHANGED);
+    }
+    
+    // Upload file to storage and return a path.
+    private String getPath(String file) {
+
+        BufferedInputStream inputStream = null;
+        try {
+            // Read data from assets.
+            inputStream = new BufferedInputStream(getClass().getClassLoader().getResourceAsStream(file));
+            byte[] data = new byte[inputStream.available()];
+            inputStream.read(data);
+            inputStream.close();
+
+            // Create copy file in storage.
+            File outFile = new File(file);
+            FileOutputStream os = new FileOutputStream(outFile);
+            os.write(data);
+            os.close();
+            // Return a path to file which may be read in common way.
+            return outFile.getAbsolutePath();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+        return "";
     }
     
     /*
