@@ -1,0 +1,2 @@
+~/netbeans-8.2/java/maven/bin/mvn "-Dexec.args=-Djava.library.path='/home/edgar/opencv-3.3.0/build/lib' -classpath %classpath mx.ipn.escom.ClassifierApplication" -Dexec.executable=/home/edgar/jdk1.8.0_144/bin/java org.codehaus.mojo:exec-maven-plugin:1.2.1:exec
+java -Djava.library.path="/home/edgar/opencv-3.3.0/build/lib" -jar target/classifier-0.0.1-SNAPSHOT.jar
