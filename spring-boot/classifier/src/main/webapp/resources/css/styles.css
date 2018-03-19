@@ -1,0 +1,19 @@
+.results-panel{
+    white-space: pre-wrap;
+}
+
+td .title{
+    text-align: center;
+}
+
+.title{
+    font-size: 200%;
+}
+
+.description{
+    font-size: 100%;
+}
+
+.ui-datalist-content{
+    border: none;
+}

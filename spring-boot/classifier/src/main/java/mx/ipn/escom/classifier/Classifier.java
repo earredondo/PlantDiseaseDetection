@@ -32,21 +32,21 @@ public class Classifier {
     private Mat predictions;
 
     public Classifier(String labels, String prototxt, String caffeModel, String image){
-        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        //System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         this.classes    = readLabels(labels);
         this.cnn        = readCaffeModel(prototxt, caffeModel);
         this.image      = Imgcodecs.imread(image);;
     }
     
     public Classifier(String labels, String prototxt, String caffeModel){
-        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        //System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         this.classes    = readLabels(labels);
         this.cnn        = readCaffeModel(prototxt, caffeModel);
         this.image      = null;
     }
     
     public Classifier(){
-        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        //System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         this.classes    = readLabels(getClass().getResource("/synset_words.txt").getPath());
         this.cnn        = readCaffeModel(getClass().getResource("/deploy.prototxt").getPath(), getClass().getResource("/classifier.caffemodel").getPath());
         //this.image      = Imgcodecs.imread(getClass().getResource("/images/Healty_03.JPG").getPath());
@@ -90,7 +90,7 @@ public class Classifier {
         return indexes;
     }
     
-    public String getResults(){
+    public String getResults(int numResults){
         String results = "";
         
         double len = this.predictions.size().width;
@@ -101,15 +101,15 @@ public class Classifier {
         }
         List<Integer> idxs = Classifier.argsort(probs, false);
         
-        for(int i = 0; i < 5; i ++){
-            results += "[INFO] " + (i + 1) + ". label: " + this.classes.get(idxs.get(i)) + ", probability: " + probs.get(idxs.get(i));
+        for(int i = 0; i < numResults; i ++){
+            results += "[INFO] " + (i + 1) + ". label: " + this.classes.get(idxs.get(i)) + ", probability: " + probs.get(idxs.get(i)) + "\n";
         }
         
         return results;
     }
     
-    public void printResults(){
-        System.out.println(getResults());
+    public void printResults(int numResults){
+        System.out.println(getResults(numResults));
     }
     
     public void setImage(byte[] image){

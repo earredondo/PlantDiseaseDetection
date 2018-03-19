@@ -10,34 +10,34 @@
 </h:head>
 
 <h:body>
+    <h:outputStylesheet name="css/styles.css" />
+    <h:form id="tituloForm">
+        <h:panelGrid columns="1" cellpadding="4">
+            <p:outputLabel class="title" value="Identificación de enfermedades del tomate." />
+            <p:outputLabel class="description" value="Esta aplicación permite identificar 9 enfermedades del tomate a partir de la imagen de una de las hojas que presenta los sintomas. Las enfermedades identificadas son las siguientes." />
+            <p:dataList value="#{classifierBean.diseases}" var="disease" type="ordered">
+                #{disease}
+            </p:dataList>
+        </h:panelGrid>
+    </h:form>
     
     <h:form>
         <p:fileUpload fileUploadListener="#{classifierBean.subirImagen}" mode="advanced" dragDropSupport="true"
-                      update="messages @this" sizeLimit="1000000000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" fileLimit="1" />
+                      update="messages @this resultsForm" sizeLimit="1000000000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" fileLimit="1"
+                      uploadLabel="Enviar" label="Buscar" cancelLabel="Cancelar"/>
 
         <p:growl id="messages" showDetail="true" />
     </h:form>
     
-    <h:form id="hello-world">
-
-        <p:panel header="Prueba">
+    <h:form id="resultsForm">
+        <p:panel header="Resultados">
             <h:panelGrid columns="2" cellpadding="4">
-                <h:outputText value="Imagen: " />
-                <p:inputText id="imagenNombre" value="#{classifierBean.leaf.image}" />
-
-                <p:commandButton id="submit" value="Submit" update="greeting"
-                  oncomplete="PF('greetingDialog').show()" />
+                <p:graphicImage value="#{classifierBean.image}" />
+                <p:outputLabel id="results" value="#{classifierBean.results}" class="results-panel" />
             </h:panelGrid>
         </p:panel>
-
-        <p:dialog header="Greeting" widgetVar="greetingDialog"
-          modal="true" resizable="false">
-          <h:panelGrid id="greeting" columns="1" cellpadding="4">
-            <h:outputText value="#{classifierBean.foo()}" />
-          </h:panelGrid>
-        </p:dialog>
-
     </h:form>
+    
 </h:body>
 </html>
 

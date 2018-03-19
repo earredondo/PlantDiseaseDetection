@@ -21,10 +21,10 @@ public class ClassifierServiceImpl implements ClassifierService{
     private Classifier classifier;
     
     @Override
-    public String classify(Leaf leaf){
+    public String classify(Leaf leaf, int numResults){
         classifier.setImage(leaf.getImage());
         classifier.forward();
-        return classifier.getResults();
+        return classifier.getResults(numResults);
     }
     
 }

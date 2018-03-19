@@ -12,5 +12,5 @@ import mx.ipn.escom.pojos.Leaf;
  * @author edgar
  */
 public interface ClassifierService {
-    public String classify(Leaf leaf);
+    public String classify(Leaf leaf, int numResults);
 }

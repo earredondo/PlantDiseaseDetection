@@ -13,6 +13,7 @@ import javax.faces.webapp.FacesServlet;
 import javax.servlet.DispatcherType;
 import java.util.EnumSet;
 import mx.ipn.escom.classifier.Classifier;
+import org.opencv.core.Core;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
@@ -23,7 +24,8 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
 public class ClassifierApplication {
 
     public static void main(String[] args) {
-            SpringApplication.run(ClassifierApplication.class, args);
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        SpringApplication.run(ClassifierApplication.class, args);
     }
     
     @Bean
