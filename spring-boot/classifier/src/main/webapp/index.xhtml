@@ -32,7 +32,7 @@
     <h:form id="resultsForm">
         <p:panel header="Resultados">
             <h:panelGrid columns="2" cellpadding="4">
-                <p:graphicImage value="#{classifierBean.image}" />
+                <p:graphicImage value="#{classifierBean.image}" cache="false" />
                 <p:outputLabel id="results" value="#{classifierBean.results}" class="results-panel" />
             </h:panelGrid>
         </p:panel>
