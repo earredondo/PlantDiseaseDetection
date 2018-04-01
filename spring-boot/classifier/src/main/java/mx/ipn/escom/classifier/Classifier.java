@@ -35,24 +35,18 @@ public class Classifier {
     private Mat predictions;
 
     public Classifier(String labels, String prototxt, String caffeModel, String image){
-        //System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         this.classes    = readLabels(labels);
         this.cnn        = readCaffeModel(prototxt, caffeModel);
         this.image      = Imgcodecs.imread(image);;
     }
     
     public Classifier(String labels, String prototxt, String caffeModel){
-        //System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         this.classes    = readLabels(labels);
         this.cnn        = readCaffeModel(prototxt, caffeModel);
         this.image      = null;
     }
     
     public Classifier(){
-        //System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-        //this.classes    = readLabels(getClass().getResource("/synset_words.txt").getPath());
-        //this.cnn        = readCaffeModel(getClass().getResource("/deploy.prototxt").getPath(), getClass().getResource("/classifier.caffemodel").getPath());
-        //this.image      = Imgcodecs.imread(getClass().getResource("/images/Healty_03.JPG").getPath());
         this.classes    = readLabels(getPath("synset_words.txt"));
         this.cnn        = readCaffeModel(getPath("deploy.prototxt"), getPath("classifier.caffemodel"));
     }
@@ -76,7 +70,6 @@ public class Classifier {
     }
     
     public void forward(){
-        //Mat rawImage = Imgcodecs.imread(this.image);
         Mat inputBlob = Dnn.blobFromImage(this.image, 1.0, new Size(227, 227), new Scalar(104, 117, 123), false);
         this.cnn.setInput(inputBlob);
         this.predictions = cnn.forward();
@@ -121,23 +114,19 @@ public class Classifier {
         this.image = Imgcodecs.imdecode(new MatOfByte(image), Imgcodecs.CV_LOAD_IMAGE_UNCHANGED);
     }
     
-    // Upload file to storage and return a path.
     private String getPath(String file) {
 
         BufferedInputStream inputStream = null;
         try {
-            // Read data from assets.
             inputStream = new BufferedInputStream(getClass().getClassLoader().getResourceAsStream(file));
             byte[] data = new byte[inputStream.available()];
             inputStream.read(data);
             inputStream.close();
 
-            // Create copy file in storage.
             File outFile = new File(file);
             FileOutputStream os = new FileOutputStream(outFile);
             os.write(data);
             os.close();
-            // Return a path to file which may be read in common way.
             return outFile.getAbsolutePath();
         } catch (IOException ioe) {
             ioe.printStackTrace();
@@ -145,12 +134,4 @@ public class Classifier {
         return "";
     }
     
-    /*
-    public static void main(String[] args) {
-        //Classifier classifier = new Classifier(args[0], args[1], args[2], args[3]);
-        Classifier classifier = new Classifier();
-        classifier.forward();
-        classifier.printResults();
-    }
-    */
 }
