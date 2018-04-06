@@ -66,5 +66,5 @@ for line in content:
     i += 1
     print("\rProgress: {:.2f}%".format(i * 100 /numberOfImages), end='')
 
-print("[INFO] Eficiency: {:.2f}%".format(rightPredictions * 100 /numberOfImages))
+print("\n[INFO] Eficiency: {:.2f}%".format(rightPredictions * 100 /numberOfImages))
 
