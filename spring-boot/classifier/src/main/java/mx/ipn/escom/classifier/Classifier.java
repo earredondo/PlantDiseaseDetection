@@ -98,9 +98,11 @@ public class Classifier {
             probs.add(this.predictions.get(0, i)[0]);
         }
         List<Integer> idxs = Classifier.argsort(probs, false);
-        
+        if( probs.get(idxs.get(0)) < 0.6 ){
+            return null;
+        }
         for(int i = 0; i < numResults; i ++){
-            results += "[INFO] " + (i + 1) + ". label: " + this.classes.get(idxs.get(i)) + ", probability: " + probs.get(idxs.get(i)) + "\n";
+            results += "[INFO] " + (i + 1) + ". Clase: " + this.classes.get(idxs.get(i)) + ", probabilidad: " + String.format(java.util.Locale.US,"%.2f", probs.get(idxs.get(i)) * 100) + "%\n";
         }
         
         return results;

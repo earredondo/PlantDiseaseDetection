@@ -69,15 +69,22 @@ public class ClassifierController {
             event.getFile().getInputstream().read(content);
             
             leaf.setImage(content);
-            this.results = "A continuación se muestran las dos enfermedades más probables.\n\n" + classifierService.classify(leaf, 2);
+            
+            String classes = classifierService.classify(leaf, 2);
+            if(classes == null){ this.results = "La imagen proporcionada no pertenece a ninguna de las clases identificables."; }
+            else { this.results = "A continuación se muestran las dos enfermedades más probables.\n\n" + classes; }
             
             this.image = new DefaultStreamedContent(event.getFile().getInputstream(), "image/png");
             
-            FacesMessage message = new FacesMessage("Identificación", "Se realizó la clasificación correctamente.");
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Identificación", "Se realizó la clasificación correctamente.");
             FacesContext.getCurrentInstance().addMessage(null, message);
         } catch (IOException ioe) {
             ioe.printStackTrace();
-        }        
+        } catch(Exception e){
+            this.results = "";
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Verifique que el archivo proporcionado no este dañado.");
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        }
     }
 
     /**
