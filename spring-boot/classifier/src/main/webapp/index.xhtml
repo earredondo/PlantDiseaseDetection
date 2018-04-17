@@ -11,32 +11,74 @@
 
 <h:body>
     <h:outputStylesheet name="css/styles.css" />
-    <h:form id="tituloForm">
-        <h:panelGrid columns="1" cellpadding="4">
-            <p:outputLabel class="title" value="Identificación de enfermedades del tomate." />
-            <p:outputLabel class="description" value="Esta aplicación permite identificar 9 enfermedades del tomate a partir de la imagen de una de las hojas que presenta los sintomas. Las enfermedades identificadas son las siguientes." />
-            <p:dataList value="#{classifierBean.diseases}" var="disease" type="ordered">
-                #{disease}
-            </p:dataList>
-        </h:panelGrid>
-    </h:form>
     
-    <h:form>
-        <p:fileUpload fileUploadListener="#{classifierBean.subirImagen}" mode="advanced" dragDropSupport="true"
-                      update="messages @this resultsForm" sizeLimit="1000000000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" fileLimit="1"
-                      uploadLabel="Enviar" label="Buscar" cancelLabel="Cancelar"/>
+    <p:tabView id="tabs" orientation="left">
+        <p:tab title="El tomate">
+            <f:facet name="title">
+                <i class="fa fa-paper-plane-o" aria-hidden="true"> </i>
+                <h:outputText value=" El tomate"/>
+            </f:facet>
+            <p:outputLabel value="El tomate" class="titulo" />
+            <p>El tomate (jitomate o tomatera), cuyo nombre científico es "Lycopersicon escultelum", 
+                es una fruta, perteneciente a la familia de las solanáceas. Hoy día se cultiva y consume 
+                en todo el mundo, tanto fresco como procesado (purés, zumos, enlatados, frito, 
+                deshidratados...), pero el tomate o llegó a Europa hasta el descubrimiento de América y 
+                los viajes de ultramar de los conquistadores españoles.</p>
+            <p>El tomate es originario de los bajos Andes, y fue cultivado por los Aztecas en México. 
+                Los Mexicas o aztecas lo conocían como xïctomatl, fruto con ombligo. Debido a esa palabra 
+                azteca "tomatl" los conquistadores españoles lo llamaron "tomate".</p>
+            <p>Mientras el tomate crece de forma natural en los países con climas tropicales y 
+                subtropicales, en países con climas templados, el cultivo se realiza en invernaderos de 
+                cultivo hidropónico que pueden ser de sustrato o de raíz flotante (se prefiere el 
+                sustrato).</p>
+            <p>La ventaja de cultivar el tomate en un cultivo hidropónico en ambiente controlado (en 
+                invernadero) es la capacidad de modificar todos los factores relacionados con su 
+                desarrollo de forma más minuciosa como cultivar en áreas con suelos no aptos (si se 
+                hace con técnica de hidroponia), evitar las pérdidas excesivas de agua por evaporación, 
+                control estricto de la temperatura, riego más efectivo, control de los efectos del viento 
+                y de la exposición directa a la luz solar  y la capacidad de "aislarlo" de las posibles 
+                plagas (esto no es totalmente cierto dado que algunas plagas logran ingresar a los 
+                invernaderos y requieren acciones más específicas). Pero, sobre todo la ventaja es poder 
+                aislarlo del suelo que en puede aportar salinidad, concentraciones inadecuadas de nitratos 
+                y otros minerales, humedad inadecuada, oxigenación pobre de las raíces y enfermedades.</p>
+            <p>La desventaja de los cultivos hidropónicos estriba en el consumo de energía para el 
+                mantenimiento de la temperatura en los invernaderos y lo costoso de la <i>PRIMERA INVERSIÓN</i> 
+                en implementos de riego.</p>
+            <p:carousel var="row" value="#{[1,2,3,4,5]}" numVisible="1" itemStyle="text-align:center" 
+                        responsive="true" circular="true" autoPlayInterval="3000">
+                <p:graphicImage library="img" name="tomates0#{row}.jpg" height="300" width="500"/>
+            </p:carousel>
+        </p:tab>
+        <p:tab title="Enfermedades">
+            <h:form id="tituloForm">
+                <h:panelGrid columns="1" cellpadding="4">
+                    <p:outputLabel class="title" value="Identificación de enfermedades del tomate." />
+                    <p:outputLabel class="description" value="Esta aplicación permite identificar 9 enfermedades del tomate a partir de la imagen de una de las hojas que presenta los sintomas. Las enfermedades identificadas son las siguientes." />
+                    <p:dataList value="#{classifierBean.diseases}" var="disease" type="ordered">
+                        #{disease}
+                    </p:dataList>
+                </h:panelGrid>
+            </h:form>
+        </p:tab>
+        <p:tab title="Identificación de enfermedades">
+            <h:form>
+                <p:fileUpload fileUploadListener="#{classifierBean.subirImagen}" mode="advanced" dragDropSupport="true"
+                              update="messages @this :tabs:resultsForm" sizeLimit="1000000000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" fileLimit="1"
+                              uploadLabel="Enviar" label="Buscar" cancelLabel="Cancelar"/>
 
-        <p:growl id="messages" showDetail="true" />
-    </h:form>
-    
-    <h:form id="resultsForm">
-        <p:panel header="Resultados">
-            <h:panelGrid columns="2" cellpadding="4">
-                <p:graphicImage value="#{classifierBean.image}" cache="false" height="256" width="256" />
-                <p:outputLabel id="results" value="#{classifierBean.results}" class="results-panel" />
-            </h:panelGrid>
-        </p:panel>
-    </h:form>
+                <p:growl id="messages" showDetail="true" />
+            </h:form>
+
+            <h:form id="resultsForm">
+                <p:panel header="Resultados">
+                    <h:panelGrid columns="2" cellpadding="4">
+                        <p:graphicImage value="#{classifierBean.image}" cache="false" height="256" width="256" />
+                        <p:outputLabel id="results" value="#{classifierBean.results}" class="results-panel" />
+                    </h:panelGrid>
+                </p:panel>
+            </h:form>
+        </p:tab>
+    </p:tabView>
     
 </h:body>
 </html>
