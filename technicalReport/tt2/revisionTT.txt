@@ -1,0 +1,85 @@
+En el resumen se menciona que el objetivo es detectar enfermedades mientras que el titulo dice detectar problemas de nutrientes
+
+pp5
+predictions can be made whit using te open CV
+
+pp10 sustratos inhertes .. sanitarias más adecuadas
+
+pp11 desconocimiento de productores
+
+pp 12 decrece la automatización del sistema
+
+
+PP 13 SE PLANTE UN MODELO INCREMENTAL
+
+No estoy muy seguro que el diseño de dos etapas por separado sea un modelo incremental pp14 y 13
+
+pp15 en al aprendizaje
+
+OJO OTRO TT Aprendizaje profundo exito en el reconocimiento de lenguaje natural
+OJO OTRO TT pp16
+
+esta compuesta por capa tres capas pp19
+
+De forma intuitiva la red aprenderá los filtros que se activan pp 20
+
+
+25 * GPU ¿Qué significa el arterisco?
+
+pp28 bifurcado Quizas sea mejor explicarlo que traducirlo
+
+pp29 at-get
+
+pp31 make Compilar OpenCV ¿Titulo?
+
+pp31 ¿se volvieron a instalar las mismas herramientas para Caffe?
+
+pp36 cada 1000 se realizarán 1000
+
+pp37 emnorr
+
+pp37 se tomaron desiciones ¿hay manera de justificar y coroborar que hayan sido adecuadas? ¿En qué se basaron?
+
+pp42 horas de calculo enfunción de la computadora ¿de qué manera se elige o mide una computadora para esto?
+
+pp48 se tomaron desiciones ¿hay manera de justificar y coroborar que hayan sido adecuadas? ¿En qué se basaron? la desición tomada sobre cafenet ¿Se puede justificar de otra manera?
+
+https://github.com/makelove/OpenCV-Python-Tutorial/blob/master/Notebook/Blog/deep-learning-opencv%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0dnn/deep_learning_with_opencv.py
+
+pp52 archivo en ingles ?? ¿Predicción de hoja sana Fig 5.2?
+
+pp55 RF02 probabilidad de enfermedad correcta ¿Hoja sana?
+
+pp55 RNF Compatible con un navegador o con algun estandar
+
+pp56 ¿Es posible dejar una maquina virtual con esas características?
+
+pp57 ¿El diagrama de caso de uso no permite expresar lo que se le devuelve al usuario?
+
+cambiar hoja enferma por hoja
+
+pp59 ¿Anexar hoja sana a la tabla 3.1?
+
+pp65 introducción a maven y spring ¿qué son? ¿para qué se necesitan?
+
+pp67 parece un manual de usuario de NetBeans
+
+pp68 segundo párrafo 
+
+pp75 cumplimiento de software; RF02 ¿etiquetada? y clasificarla; 5 ¿por qué al menos 10%?
+
+pp76 ¿pruebas de 4 a 6?
+
+
+pp92 ¿Área de mensaje?
+
+pp92 Cambiar el nombre de las enfermedades a sus nombres en español
+
+pp 91 cambiar redacción Formatos soportados por el SIET; espqcificar las consecuencias de seleccionar una resolución menor ¿En que parte del sideño se mencionó la resolución de la imagen y el cambio de escala?
+
+pp 91 ¿Se realizarón mediciones del cambio de la eficiencia para imagenes diferentes a la especificación?
+
+pp95 ¿Se almacenan las imagenes enviadas con la finalidad de crear un banco proio?
+
+
+
