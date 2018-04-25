@@ -1,0 +1,10 @@
+0 Araña roja
+1 Septoriosis
+2 Mancha bacteriana
+3 Virus del rizado amarillo
+4 Planta sana
+5 Virus del mosaico
+6 Mancha en forma de blanco
+7 Tizón temprano
+8 Tizón tardío
+9 Passalora fulva (Moho en la hoja)
