@@ -17,3 +17,13 @@ td .title{
 .ui-datalist-content{
     border: none;
 }
+
+.panel-titulo{
+    text-align: center;
+    background: #D5DFEC;
+    margin-bottom: 20px;
+}
+
+.panel-titulo .titulo{
+    font-size: 150%;
+}

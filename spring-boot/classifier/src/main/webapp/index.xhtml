@@ -15,10 +15,12 @@
     <p:tabView id="tabs" orientation="left">
         <p:tab title="El tomate">
             <f:facet name="title">
-                <i class="fa fa-paper-plane-o" aria-hidden="true"> </i>
+                <i class="fa fa-leaf" aria-hidden="true"> </i>
                 <h:outputText value=" El tomate"/>
             </f:facet>
-            <p:outputLabel value="El tomate" class="titulo" />
+            <p:panelGrid columns="1" layout="grid" styleClass="ui-panelgrid-blank panel-titulo">
+                <p:outputLabel value="El tomate" class="titulo" />
+            </p:panelGrid>
             <p>El tomate (jitomate o tomatera), cuyo nombre científico es "Lycopersicon escultelum", 
                 es una fruta, perteneciente a la familia de las solanáceas. Hoy día se cultiva y consume 
                 en todo el mundo, tanto fresco como procesado (purés, zumos, enlatados, frito, 
@@ -42,7 +44,7 @@
                 aislarlo del suelo que en puede aportar salinidad, concentraciones inadecuadas de nitratos 
                 y otros minerales, humedad inadecuada, oxigenación pobre de las raíces y enfermedades.</p>
             <p>La desventaja de los cultivos hidropónicos estriba en el consumo de energía para el 
-                mantenimiento de la temperatura en los invernaderos y lo costoso de la <i>PRIMERA INVERSIÓN</i> 
+                mantenimiento de la temperatura en los invernaderos y lo costoso de la primera inversi&oacute;n 
                 en implementos de riego.</p>
             <p:carousel var="row" value="#{[1,2,3,4,5]}" numVisible="1" itemStyle="text-align:center" 
                         responsive="true" circular="true" autoPlayInterval="3000">
@@ -50,17 +52,158 @@
             </p:carousel>
         </p:tab>
         <p:tab title="Enfermedades">
+            <f:facet name="title">
+                <i class="fa fa-plus-square" aria-hidden="true"> </i>
+                <h:outputText value=" Enfermedades"/>
+            </f:facet>
+            <p:panelGrid columns="1" layout="grid" styleClass="ui-panelgrid-blank panel-titulo">
+                <p:outputLabel value="Enfermedades del tomate" class="titulo" />
+            </p:panelGrid>
+            <p:accordionPanel>
+                <p:tab title="Virus del rizado amarillo del tomate">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage library="img" name="virusRizadoAmarillo.jpg" />
+                        <p>El virus del rizado amarillo del tomate (TYLCV por sus siglas en inglés) 
+                            es un virus que infectan al tomate transmitido por la mosca blanca 
+                            <i>Bemisia tabaci</i>. Este virus pertenece al género de los 
+                            <i>Begomovirus</i> de la familia <i>Geminiviridae</i>. El virus también 
+                            puede transmitirse a partir de la germinación de semillas obtenidas de 
+                            frutos de plantas infectadas. Este virus puede generar pérdidas críticas 
+                            en la producción de tomate.</p>
+                        <p>Plantas infectadas exhiben un enrollamiento de los bordes de la hoja 
+                            hacia arriba y hacia adentro, las venas se vuelven amarillas y se 
+                            detiene el crecimiento de la planta. El virus reduce considerablemente 
+                            la producción de fritos, especialmente cuando la infección ocurre antes 
+                            de la etapa de florecimiento. En los frutos no existen síntomas visibles 
+                            derivados de la infección de la planta.</p>
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Virus del mosaico del tomate">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage library="img" name="virusMosaico.jpg" />
+                        <p>El virus del mosaico del tomate (ToMV por sus siglas en inglés) afecta 
+                            principalmente a variedades tradicionales o autóctonas de tomate que no 
+                            presentan genes de resistencia a <i>Tobamovirus</i>. También puede 
+                            infectar a otras especies cultivadas y vegetación natural principalmente 
+                            de la familia <i>Solanaceae</i>, pero también <i>Aizoaceae, Amaranthaceae, 
+                                Chenopodiaceae</i> y <i>Scrophulariaceae</i></p>
+                        <p>Los síntomas en tomate pueden agruparse como: 1)Mosaicos de color verde 
+                            claro - verde oscuro con deformación de la hoja y a veces filiformismos. 
+                            Las plantas son menos vigorosas y producen menos. La maduración del fruto 
+                            no es uniforme. 2)Mosaicos de color amarillo o blanquecinos similares a 
+                            los de la planta aucuba. 3)Necrosis de tallos pecíolos, hojas y frutos. 
+                            Frutos con manchas externas pardo-oscuras y necrosis internas.</p>
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Mancha en forma de blanco">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage library="img" name="manchaFormaDeBlanco.jpg" />
+                        <p><i>Corynespora cassiicola</i> es una especie de hongo conocido como un 
+                            patógeno de las plantas. Es un patógeno que sobrevive en los residuos 
+                            de cultivo, las semillas y el suelo.</p>
+                        <p>Genera lesiones foliares redondas e irregulares, marrón rojizas, variando 
+                            desde pequeños puntos a manchas necróticas de 1.5 cm de diámetro. Es 
+                            común observar un color amarillo alrededor de las lesiones.</p>
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Araña roja">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage library="img" name="araniaRoja.jpg" />
+                        <p>La araña roja del tomate es una especie de araña de color naranja pálido 
+                            a rojo y se alimenta de la cara inferior de las hojas. Estas arañas son 
+                            tan pequeñas que no pueden ser identificadas a simple vista, a menos de 
+                            que se hayan multiplicado hasta formar colonias.  Los daños aparecen 
+                            como múltiples marcas brillantes de color amarillo. Eventualmente las 
+                            hojas se tornan de color café y mueren o se desprenden. Un ataque más 
+                            severo conduce a la formación de telaraña en la planta.</p>
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Septoriosis">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage library="img" name="septoriosis.jpg" />
+                        <p>La septoriosis es causada por el hongo <i>Septoria lycopersici</i>. Es 
+                            una de las enfermedades del tomate más destructivas y es particularmente 
+                            severa en áreas donde el ambiente húmedo persiste por periodos extensos 
+                            de tiempo.</p>
+                        <p>La septoriosis generalmente se manifiesta en las hojas de la parte 
+                            inferior de la planta como puntos circulares, de entre 1-6 mm de diámetro. 
+                            Los puntos son de color café oscuro en los márgenes y gris en el centro. 
+                            Generalmente existen muchos puntos en cada hoja (figura C.5). La 
+                            enfermedad se propaga de las hojas viejas a las hojas jóvenes. Si las 
+                            lesiones son numerosas, la hoja se torna ligeramente amarilla, 
+                            posteriormente café y finalmente se marchita. Los frutos raramente 
+                            resultan infectados.</p>
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Moho en la hoja">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage library="img" name="mohoEnHoja.jpg" />
+                        <p><i>Passalora fulva</i> es una especie de hongo, el patógeno causante del 
+                            moho en la hoja de tomate. Los primeros síntomas son una serie de puntos 
+                            amarillos, de un margen indefinido, en la cara superior de la hoja. La 
+                            esporulación, que se produce en la superficie inferior de la hoja, debajo 
+                            de los puntos, es de un color gris claro, pero se vuelve de color café 
+                            claro a café rojizo o verde oliva. La pérdida de follaje puede ocurrir si 
+                            la infección es lo suficientemente severa.</p>
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Tizón tardío">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage library="img" name="tizonTardio.jpg" />
+                        <p>El tizón tardío es la enfermedad más sería que afecta al tomate. Puede 
+                            rápidamente (una semana) arruinar plantaciones enteras y generar fuentes 
+                            de infección para otras plantas. El tizón tardío es distinto a otras 
+                            enfermedades del tomate. Estás afectar generalmente solo las hojas o 
+                            causan daños limitados al fruto, y aunque pueden disminuir la producción, 
+                            generalmente no causan una pérdida total. Además, debido a que la mayoría 
+                            de los patógenos no son dispersados por el viento, sus efectos se 
+                            encuentran localizados. Por otro lado, el tizón tardío mata las plantas 
+                            por completo y es altamente contagioso.</p>
+                        <p>Los primeros síntomas son manchas de un color verde oscuro en las hojas 
+                            jóvenes (figura C.7). Posteriormente la hoja se marchita y muere. Las 
+                            manchas también pueden presentarse en los tallos y en los frutos y se 
+                            vuelven de color café en condiciones de humedad. Las manchas se unen para 
+                            formar regiones más grandes de un color café oscuro.</p>
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Tizón temprano">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage library="img" name="tizonTemprano.jpg" />
+                        <p>El tizón temprano es una enfermedad generada por un hongo. Esta enfermedad 
+                            produce manchas irregulares de color café de entre 0.5 a 3 cm de diámetro. 
+                            Alrededor de las manchas, la hoja se vuelve de color amarillo y puede llegar 
+                            a secarse y desprenderse. La enfermedad comienza en las hojas viejas y se 
+                            dispersa hacía las hojas jóvenes, en la parte superior de la planta.</p>
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Mancha bacteriana">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage library="img" name="manchaBacteriana.jpg" />
+                        <p>La enfermedad mancha bacteriana también es conocida como costra bacteriana, 
+                            cáncer de tallo o macha foliar. Produce manchas de color amarillo en la hoja 
+                            que van adquiriendo un color café oscuro (figura C.9). Las flores afectadas 
+                            se desprenden. Algunas veces las manchas están rodeadas por una zona de un 
+                            color amarillo.</p>
+                    </h:panelGrid>
+                </p:tab>
+            </p:accordionPanel>
+        </p:tab>
+        <p:tab title="Identificación de enfermedades">
+            <f:facet name="title">
+                <i class="fa fa-hospital-o" aria-hidden="true"> </i>
+                <h:outputText value=" Identificación de enfermedades"/>
+            </f:facet>
+            <p:panelGrid columns="1" layout="grid" styleClass="ui-panelgrid-blank panel-titulo">
+                <p:outputLabel value="Identificación de enfermedades del tomate" class="titulo" />
+            </p:panelGrid>
             <h:form id="tituloForm">
                 <h:panelGrid columns="1" cellpadding="4">
-                    <p:outputLabel class="title" value="Identificación de enfermedades del tomate." />
                     <p:outputLabel class="description" value="Esta aplicación permite identificar 9 enfermedades del tomate a partir de la imagen de una de las hojas que presenta los sintomas. Las enfermedades identificadas son las siguientes." />
                     <p:dataList value="#{classifierBean.diseases}" var="disease" type="ordered">
                         #{disease}
                     </p:dataList>
                 </h:panelGrid>
             </h:form>
-        </p:tab>
-        <p:tab title="Identificación de enfermedades">
             <h:form>
                 <p:fileUpload fileUploadListener="#{classifierBean.subirImagen}" mode="advanced" dragDropSupport="true"
                               update="messages @this :tabs:resultsForm" sizeLimit="1000000000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" fileLimit="1"
