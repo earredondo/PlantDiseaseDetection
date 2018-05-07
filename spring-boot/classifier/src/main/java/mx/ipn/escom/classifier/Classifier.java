@@ -54,7 +54,7 @@ public class Classifier {
     private List<String> readLabels(String labelsPath){
         List<String> labels = new ArrayList();
         try{
-            Scanner sc = new Scanner(new File(labelsPath));
+            Scanner sc = new Scanner(new File(labelsPath), "UTF-8");
             while(sc.hasNextLine()){
                 String line = sc.nextLine();
                 labels.add( line.substring( line.indexOf(" ") + 1 ).split(",")[0] );
