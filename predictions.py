@@ -37,6 +37,7 @@ net = cv2.dnn.readNetFromCaffe(args["prototxt"], args["model"])
 rightPredictions = 0
 numberOfImages = len(content)
 i = 0
+confussionMatrix = [[0 for x in range(10)] for y in range(10)]
 for line in content:
     # our CNN requires fixed spatial dimensions for our input image(s)
     # so we need to ensure it is resized to 224x224 pixels while
@@ -61,10 +62,17 @@ for line in content:
 
     prediction = idxs[0]
     label = int(line.split(" ")[1])
+
+    confussionMatrix[label][prediction] = confussionMatrix[label][prediction] + 1
+
     if prediction == label:
         rightPredictions+=1
     i += 1
     print("\rProgress: {:.2f}%".format(i * 100 /numberOfImages), end='')
 
 print("\n[INFO] Eficiency: {:.2f}%".format(rightPredictions * 100 /numberOfImages))
+print('Confussion Matrix')
+for j in range(10):
+    print(confussionMatrix[j])
+
 
