@@ -102,7 +102,7 @@ public class Classifier {
             return null;
         }
         for(int i = 0; i < numResults; i ++){
-            results += "[INFO] " + (i + 1) + ". Clase: " + this.classes.get(idxs.get(i)) + ", probabilidad: " + String.format(java.util.Locale.US,"%.2f", probs.get(idxs.get(i)) * 100) + "%\n";
+            results += "[INFO] " + (i + 1) + ". Class: " + this.classes.get(idxs.get(i)) + ", probability: " + String.format(java.util.Locale.US,"%.2f", probs.get(idxs.get(i)) * 100) + "%\n";
         }
         
         return results;
